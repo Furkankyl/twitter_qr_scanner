@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_scanner_overlay_shape.dart';
+import 'package:twitter_qr_scanner/QrScannerOverlayShape.dart';
 import 'package:twitter_qr_scanner/twitter_qr_scanner.dart';
 
 

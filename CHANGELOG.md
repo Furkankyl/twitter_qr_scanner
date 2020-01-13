@@ -1,3 +1,11 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - 13 January 2020
 
-* TODO: Describe initial release.
+* Twitter qr code scan package for flutter.
+
+## [0.0.2] - 13 January 2020
+
+* Updated readme
+
+## [0.0.3] - 13 January 2020
+
+* QrScannerOverlayShape Added
