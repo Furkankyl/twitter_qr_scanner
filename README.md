@@ -4,14 +4,14 @@ QR Code scan page like Twitter.
 
 ## Example
 
-![alt text](screen1.png) 
-![alt text](screen2.png)
+<img src="https://github.com/Furkankyl/twitter_qr_scanner/blob/master/screen1.png" height="350" />
+<img src="https://github.com/Furkankyl/twitter_qr_scanner/blob/master/screen2.png" height="350" />
 
 ## Installation
 
 To use this plugin, add firebase_messaging as a [dependency in your pubspec.yaml file.](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
 
-```yaml
+```bash
 twitter_qr_scanner: any
 ```
 
@@ -25,7 +25,7 @@ This plugin work only level greater then sdk version 21.
 # iOS Integration
 In order to use this plugin, add the following to your Info.plist file:
 
-```plist
+```xml
 <key>io.flutter.embedded_views_preview</key>
 <true/>
 
