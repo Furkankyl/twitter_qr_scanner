@@ -4,8 +4,8 @@ QR Code scan page like Twitter.
 
 ## Example
 
-<img src="https://github.com/Furkankyl/twitter_qr_scanner/blob/master/screen1.png" height="350" />
-<img src="https://github.com/Furkankyl/twitter_qr_scanner/blob/master/screen2.png" height="350" />
+<img src="https://raw.githubusercontent.com/Furkankyl/twitter_qr_scanner/master/screen1.png" height="350" />
+<img src="https://raw.githubusercontent.com/Furkankyl/twitter_qr_scanner/master/screen2.png" height="350" />
 
 ## Installation
 
@@ -25,7 +25,7 @@ This plugin work only level greater then sdk version 21.
 # iOS Integration
 In order to use this plugin, add the following to your Info.plist file:
 
-```xml
+```plist
 <key>io.flutter.embedded_views_preview</key>
 <true/>
 

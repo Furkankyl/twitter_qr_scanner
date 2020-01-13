@@ -1,6 +1,6 @@
 name: twitter_qr_scanner
 description: Twitter qr code scan package for flutter.
-version: 0.0.3
+version: 0.0.4
 author: Furkan KAYALI <furkan.kayali@bil.omu.edu.tr>
 homepage: https://github.com/Furkankyl/twitter_qr_scanner
 
