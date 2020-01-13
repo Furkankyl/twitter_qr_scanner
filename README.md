@@ -4,8 +4,7 @@ QR Code scan page like Twitter.
 
 ## Example
 
-<img src="https://raw.githubusercontent.com/Furkankyl/twitter_qr_scanner/master/screen1.png" width="35%" />
-<img src="https://raw.githubusercontent.com/Furkankyl/twitter_qr_scanner/master/screen2.png" width="35%"  />
+<img src="https://raw.githubusercontent.com/Furkankyl/twitter_qr_scanner/master/screen1.png" width="35%" /><img src="https://raw.githubusercontent.com/Furkankyl/twitter_qr_scanner/master/screen2.png" width="35%"  />
 
 ## Installation
 
