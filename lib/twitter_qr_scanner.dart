@@ -148,7 +148,7 @@ class _QRViewState extends State<QRView> {
               child: ClipRRect(
 
                 borderRadius: BorderRadius.circular(255),
-                child: FlareActor("assets/flare/QRButton.flr",
+                child: FlareActor("packages/twitter_qr_scanner/asset/QRButton.flr",
                   alignment: Alignment.center,
                   animation: flareAnimation,
                   fit: BoxFit.contain,
@@ -167,13 +167,13 @@ class _QRViewState extends State<QRView> {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         _platformQrView = AndroidView(
-          viewType: 'net.touchcapture.qr.flutterqr/qrview',
+          viewType: 'com.anka.twitter_qr_scanner/qrview',
           onPlatformViewCreated: _onPlatformViewCreated,
         );
         break;
       case TargetPlatform.iOS:
         _platformQrView = UiKitView(
-          viewType: 'net.touchcapture.qr.flutterqr/qrview',
+          viewType: 'com.anka.twitter_qr_scanner/qrview',
           onPlatformViewCreated: _onPlatformViewCreated,
           creationParams: _CreationParams.fromWidget(0, 0).toMap(),
           creationParamsCodec: StandardMessageCodec(),
@@ -225,7 +225,7 @@ class QRViewController {
   Stream<String> get scannedDataStream => _scanUpdateController.stream;
 
   QRViewController._(int id, GlobalKey qrKey)
-      : _channel = MethodChannel('net.touchcapture.qr.flutterqr/qrview_$id') {
+      : _channel = MethodChannel('com.anka.twitter_qr_scanner/qrview_$id') {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       final RenderBox renderBox = qrKey.currentContext.findRenderObject();
       _channel.invokeMethod("setDimensions",

@@ -1,18 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:twitter_qr_scanner/QrScannerOverlayShape.dart';
 import 'package:twitter_qr_scanner/twitter_qr_scanner.dart';
+import 'package:twitter_qr_scanner/QrScannerOverlayShape.dart';
+
+void main() => runApp(MaterialApp(home: MyApp()));
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: RaisedButton(
+          child: Text('Scan'),
+          onPressed: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => QRExample()));
+          },
+        ),
+      ),
+    );
+  }
+}
 
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+
+class QRExample extends StatefulWidget {
+  QRExample({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _QRExampleState createState() => _QRExampleState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _QRExampleState extends State<QRExample> {
   GlobalKey qrKey = GlobalKey();
   QRViewController controller;
   var qrText = "  Henüz tarama yapmadın";

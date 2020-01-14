@@ -8,7 +8,7 @@ QR Code scan page like Twitter.
 
 ## Installation
 
-To use this plugin, add firebase_messaging as a [dependency in your pubspec.yaml file.](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
+To use this plugin, add twitter_qr_scanner as a [dependency in your pubspec.yaml file.](https://flutter.dev/docs/development/packages-and-plugins/using-packages)
 
 ```bash
 twitter_qr_scanner: any
