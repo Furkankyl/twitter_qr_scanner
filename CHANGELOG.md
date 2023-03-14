@@ -21,3 +21,7 @@
 ## [0.0.6] - 13 January 2020
 
 * unregistered type: com.anka.twitter_qr_scanner/qrview bug fixed
+* 
+## [2.0.0] - 14 March 2023
+
+* unregistered type: com.anka.twitter_qr_scanner/qrview bug fixed

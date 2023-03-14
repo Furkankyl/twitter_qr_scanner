@@ -5,6 +5,7 @@ homepage: https://github.com/Furkankyl/twitter_qr_scanner
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=1.10.0"
 
 dependencies:
   flutter:
@@ -29,6 +30,10 @@ flutter:
     - packages/twitter_qr_scanner/asset/QRButton.flr
 
   plugin:
-    androidPackage: com.anka.twitter_qr_scanner
-    pluginClass: TwitterQrScannerPlugin
+    platforms:
+      ios:
+        pluginClass: TwitterQrScannerPlugin
+      android:
+        package: com.anka.twitter_qr_scanner
+        pluginClass: TwitterQrScannerPlugin
 
