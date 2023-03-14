@@ -14,18 +14,15 @@ typedef void QRViewCreatedCallback(QRViewController controller);
 
 class QRView extends StatefulWidget {
   const QRView({
-    @required Key key,
-    @required this.onQRViewCreated,
-    @required this.data,
-    this.overlay,
+    required GlobalKey<State<StatefulWidget>> key,
+    required this.onQRViewCreated,
+    required this.data,
+    required this.overlay,
     this.qrCodeBackgroundColor = Colors.blue,
     this.qrCodeForegroundColor = Colors.white,
     this.switchButtonColor = Colors.white,
 
-  })  : assert(key != null),
-        assert(onQRViewCreated != null),
-        assert(data != null),
-        super(key: key);
+  })  : super(key: key);
 
   final QRViewCreatedCallback onQRViewCreated;
 
@@ -41,27 +38,16 @@ class QRView extends StatefulWidget {
 
 class _QRViewState extends State<QRView> {
   bool isScanMode = true;
-  CarouselSlider slider;
+  CarouselSlider? slider;
   var flareAnimation = "view";
+  CarouselController _controller = CarouselController();
 
   getSlider(){
     setState(() {
 
 
       slider = CarouselSlider(
-        height: MediaQuery.of(context).size.height,
-        viewportFraction: 1.0,
-        enableInfiniteScroll: false,
-        onPageChanged: (index) {
-          setState(() {
-            isScanMode = index == 0;
-            if(isScanMode) {
-              flareAnimation = "scanToView";
-            }else {
-              flareAnimation = "viewToScan";
-            }
-          });
-        },
+        carouselController: _controller,
         items: [
           Container(
             alignment: Alignment.center,
@@ -91,6 +77,21 @@ class _QRViewState extends State<QRView> {
             ),
           ),
         ],
+        options: CarouselOptions(
+          height: MediaQuery.of(context).size.height,
+          viewportFraction: 1.0,
+          enableInfiniteScroll: false,
+          onPageChanged: (index,reason) {
+            setState(() {
+              isScanMode = index == 0;
+              if(isScanMode) {
+                flareAnimation = "scanToView";
+              }else {
+                flareAnimation = "viewToScan";
+              }
+            });
+          },
+        ),
       );
     });
     return slider;
@@ -101,9 +102,7 @@ class _QRViewState extends State<QRView> {
     return Stack(
       children: [
         _getPlatformQrView(),
-        widget.overlay != null
-            ? getSlider()
-            : Container(),
+         getSlider(),
         Align(
           alignment: Alignment.topLeft,
           child: SafeArea(
@@ -129,12 +128,12 @@ class _QRViewState extends State<QRView> {
                 isScanMode = !isScanMode;
                 if(isScanMode) {
                   flareAnimation = "scanToView";
-                  slider?.previousPage(duration: Duration(milliseconds: 500),
+                  _controller.previousPage(duration: Duration(milliseconds: 500),
                       curve: Curves.linear);
                 }else {
                   flareAnimation = "viewToScan";
 
-                  slider?.nextPage(duration: Duration(milliseconds: 500),
+                  _controller.nextPage(duration: Duration(milliseconds: 500),
                       curve: Curves.linear);
                 }
               });
@@ -187,15 +186,12 @@ class _QRViewState extends State<QRView> {
   }
 
   void _onPlatformViewCreated(int id) async{
-    if (widget.onQRViewCreated == null) {
-      return;
-    }
-    widget.onQRViewCreated(QRViewController._(id, widget.key));
+    widget.onQRViewCreated(QRViewController._(id,widget.key as GlobalKey<State<StatefulWidget>>));
   }
 }
 
 class _CreationParams {
-  _CreationParams({this.width, this.height});
+  _CreationParams({required this.width, required this.height});
 
   static _CreationParams fromWidget(double width, double height) {
     return _CreationParams(
@@ -227,7 +223,7 @@ class QRViewController {
   QRViewController._(int id, GlobalKey qrKey)
       : _channel = MethodChannel('com.anka.twitter_qr_scanner/qrview_$id') {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
-      final RenderBox renderBox = qrKey.currentContext.findRenderObject();
+      final RenderBox renderBox = qrKey.currentContext!.findRenderObject() as RenderBox;
       _channel.invokeMethod("setDimensions",
           {"width": renderBox.size.width, "height": renderBox.size.height});
     }

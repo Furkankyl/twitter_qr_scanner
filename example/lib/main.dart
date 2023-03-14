@@ -14,7 +14,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           child: Text('Scan'),
           onPressed: (){
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => QRExample()));
@@ -28,17 +28,14 @@ class _MyAppState extends State<MyApp> {
 
 
 class QRExample extends StatefulWidget {
-  QRExample({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _QRExampleState createState() => _QRExampleState();
+
 }
 
 class _QRExampleState extends State<QRExample> {
   GlobalKey qrKey = GlobalKey();
-  QRViewController controller;
+  QRViewController? controller;
   var qrText = "  Henüz tarama yapmadın";
 
   @override
